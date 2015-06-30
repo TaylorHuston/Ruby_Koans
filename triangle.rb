@@ -14,9 +14,20 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if a == b && b == c
+  if (a <= 0 || b <=0 || c <= 0)
+    raise TriangleError
+  end
+
+  s1, s2, hyp = [a,b,c].sort
+
+  if (s1 + s2 <= hyp)
+    raise TriangleError
+  end
+
+
+  if (a == b && b == c)
     return :equilateral
-  elsif a == b || b == c || a == c
+  elsif (a == b || b == c || a == c)
     return :isosceles
   else
     return :scalene
